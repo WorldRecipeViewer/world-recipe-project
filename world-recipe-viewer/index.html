@@ -1,13 +1,29 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/main.js"></script>
-  </body>
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>World Recipe Viewer</title>
+ <style>
+   #meal-container {
+     display: grid;
+     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+     gap: 10px;
+   }
+   .meal {
+     margin: 10px;
+     border: 1px solid #ddd;
+     padding: 10px;
+   }
+ </style>
+</head>
+<body>
+ <h1>World Recipe Viewer</h1>
+ <button id="random-meal-btn">Get Random Recipe</button>
+ <select id="country-selector">
+ </select>
+ <div id="meal-container"></div>
+
+ <script type="module" src="src/main.js"></script>
+</body>
 </html>

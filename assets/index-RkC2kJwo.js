@@ -1,0 +1,12 @@
+(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const r of document.querySelectorAll('link[rel="modulepreload"]'))s(r);new MutationObserver(r=>{for(const o of r)if(o.type==="childList")for(const a of o.addedNodes)a.tagName==="LINK"&&a.rel==="modulepreload"&&s(a)}).observe(document,{childList:!0,subtree:!0});function n(r){const o={};return r.integrity&&(o.integrity=r.integrity),r.referrerPolicy&&(o.referrerPolicy=r.referrerPolicy),r.crossOrigin==="use-credentials"?o.credentials="include":r.crossOrigin==="anonymous"?o.credentials="omit":o.credentials="same-origin",o}function s(r){if(r.ep)return;r.ep=!0;const o=n(r);fetch(r.href,o)}})();document.addEventListener("DOMContentLoaded",()=>{i(),f()});const c=async e=>{try{return(await(await fetch(e)).json()).meals}catch(t){console.error("Error:",t)}},i=async()=>{const e=await c("https://www.themealdb.com/api/json/v1/1/random.php");l(e)},d=async e=>{const t=await c(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${e}`);l(t)},l=e=>{const t=document.getElementById("meal-container");t.innerHTML="",e.forEach(n=>{const s=document.createElement("div");s.className="meal",s.innerHTML=`
+      <h3>${n.strMeal}</h3>
+      <img src="${n.strMealThumb}/preview" alt="${n.strMeal}">
+    `,s.addEventListener("click",()=>p(n.idMeal)),t.appendChild(s)})},p=async e=>{const t=await c(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${e}`);t&&u(t[0])},u=e=>{const t=document.getElementById("meal-container");t.innerHTML=`
+    <h1>${e.strMeal}</h1>
+    <img src="${e.strMealThumb}" alt="${e.strMeal}">
+    <p><strong>Category:</strong> ${e.strCategory}</p>
+    <p><strong>Area:</strong> ${e.strArea}</p>
+    <p><strong>Instructions:</strong> ${e.strInstructions}</p>
+    <p><strong>Ingredients:</strong></p>
+    <ul>${m(e)}</ul>
+  `},m=e=>{let t="";for(let n=1;n<=20;n++)e[`strIngredient${n}`]&&(t+=`<li>${e[`strIngredient${n}`]} - ${e[`strMeasure${n}`]}</li>`);return t},f=async()=>{const e=await c("https://www.themealdb.com/api/json/v1/1/list.php?a=list"),t=document.getElementById("country-selector");e.forEach(n=>{const s=document.createElement("option");s.value=n.strArea,s.textContent=n.strArea,t.appendChild(s)})};document.getElementById("random-meal-btn").addEventListener("click",i);document.getElementById("country-selector").addEventListener("change",e=>{d(e.target.value)});
