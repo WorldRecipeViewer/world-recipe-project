@@ -1,13 +1,31 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="src/style.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>International Recipe Viewer</title>
   </head>
+  <h1>International Recipe Viewer</h1>
+  <div id="container">
+  <form id="recipeForm">
+    <label for="country">Enter Country:</label>
+    <input type="text" id="country" name="country" placeholder="Type a country name">
+    <label for="results">Results per Page:</label>
+    <select id="results" name="results">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+    </select>
+    <button type="button" onclick="searchRecipes()">Search</button>
+</form>
+</div>
+
+<div id="resultsContainer"></div>
+
   <body>
     <div id="app"></div>
     <script type="module" src="/main.js"></script>
   </body>
 </html>
+
