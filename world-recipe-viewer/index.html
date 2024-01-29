@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>World Recipe Viewer</title>
-  <!-- <link rel="stylesheet" href="src/style.css"/> -->
   <style>
     body {
       display: flex;
@@ -63,6 +62,41 @@
       margin-bottom: 10px;
       box-sizing: border-box;
     }
+
+    /* Add this to your existing style tag for the modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.7);
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
   </style>
   <script type="module" crossorigin src="/your-repo-name-here/assets/index-RkC2kJwo.js"></script>
 </head>
@@ -76,17 +110,34 @@
 
       <label for="results">Results per Page:</label>
       <select id="results" name="results">
-          <option value="5">5</option>
-          <option value="10">10</option>
-          <option value="20">20</option>
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="50">50</option>
       </select>
 
-      <button type="button" id="random-meal-btn">Get Random Recipe</button>
+      <!-- Change the button type to "button" for the search button -->
+      <button type="button" id="search-meal-btn">Search</button>
     </form>
+
+    <!-- Add a button for fetching a random recipe -->
+    <button type="button" id="random-meal-btn">Get Random Recipe</button>
+  </div>
+
+  <!-- Add a modal for displaying meal details -->
+  <div id="meal-details-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="close-modal">&times;</span>
+      <div id="meal-details-content"></div>
+    </div>
   </div>
 
   <div id="meal-container"></div>
 
-  <script type="module" src='/unit-4/world-recipe-project/world-recipe-viewer/src/main.js'></script>
+  <script type="module" src="/unit-4/world-recipe-project/world-recipe-viewer/src/main.js"></script>
 </body>
 </html>
+
+
+
+
