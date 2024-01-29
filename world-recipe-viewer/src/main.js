@@ -88,7 +88,6 @@ const populateCountrySelector = async () => {
   });
 };
 
-// Add event listener for form submission
 document.getElementById('recipeForm').addEventListener('submit', (event) => {
   event.preventDefault();
   const selectedCountry = document.getElementById('country-selector').value;
@@ -96,23 +95,22 @@ document.getElementById('recipeForm').addEventListener('submit', (event) => {
   fetchMealsByCountryAndResults(selectedCountry, selectedResults);
 });
 
-// Add event listener for "Search" button
 document.getElementById('search-meal-btn').addEventListener('click', () => {
   const selectedCountry = document.getElementById('country-selector').value;
   const selectedResults = document.getElementById('results').value;
   fetchMealsByCountryAndResults(selectedCountry, selectedResults);
 });
 
-// Add event listener for "Random Recipe" button
+
 document.getElementById('random-meal-btn').addEventListener('click', fetchRandomMeal);
 
-// Add event listener to close the modal
+
 document.getElementById('close-modal').addEventListener('click', () => {
   const modal = document.getElementById('meal-details-modal');
   modal.style.display = 'none';
 });
 
-// Add event listener for "More Info" button
+
 document.getElementById('meal-container').addEventListener('click', (event) => {
   if (event.target.classList.contains('more-info-btn')) {
     const mealId = event.target.dataset.mealId;
